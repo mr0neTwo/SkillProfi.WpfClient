@@ -1,0 +1,70 @@
+﻿<Window 
+    x:Class="SkillProfi.WfpClient.Modules.Layout.View.RootWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:auth="clr-namespace:SkillProfi.WfpClient.Modules.Auth.View"
+    xmlns:main="clr-namespace:SkillProfi.WfpClient.Modules.Main.View"
+    xmlns:request="clr-namespace:SkillProfi.WfpClient.Modules.ClientRequests.View"
+    xmlns:service="clr-namespace:SkillProfi.WfpClient.Modules.Services.View"
+    xmlns:project="clr-namespace:SkillProfi.WfpClient.Modules.Projects.View"
+    xmlns:layout="clr-namespace:SkillProfi.WfpClient.Modules.Layout.View"
+    xmlns:blog="clr-namespace:SkillProfi.WfpClient.Modules.Blog.View"
+    xmlns:contacts="clr-namespace:SkillProfi.WfpClient.Modules.Contacts.View"
+    xmlns:users="clr-namespace:SkillProfi.WfpClient.Modules.Users.View"
+    mc:Ignorable="d"
+    Title="SkillProfi" 
+    Height="600" 
+    Width="920"
+    ResizeMode="NoResize"
+>
+    <Window.Resources>
+        
+        <DataTemplate DataType="{x:Type TypeName=auth:AuthViewModel }">
+            <auth:AuthPage/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type TypeName=layout:LayoutViewModel }">
+            <layout:LayoutPage/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type TypeName=request:ClientRequestViewModel }">
+            <request:ClientRequestPage/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type TypeName=main:MainViewModel }">
+            <main:MainPage/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type TypeName=service:ServicesViewModel }">
+            <service:ServicesPage/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type TypeName=project:ProjectsViewModel }">
+            <project:ProjectsPage/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type TypeName=blog:BlogViewModel }">
+            <blog:BlogPage/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type TypeName=contacts:ContactsViewModel }">
+            <contacts:ContactsPage/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type TypeName=users:UsersViewModel }">
+            <users:UsersPage/>
+        </DataTemplate>
+        
+    </Window.Resources>
+    
+    <Grid>
+        
+        <Frame
+            NavigationUIVisibility="Hidden"
+            Content="{Binding Path=CurrentView}" 
+        />
+
+    </Grid>
+</Window>
