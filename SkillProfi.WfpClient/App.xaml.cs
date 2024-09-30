@@ -13,6 +13,7 @@ using SkillProfi.WfpClient.Modules.Projects;
 using SkillProfi.WfpClient.Modules.Services;
 using SkillProfi.WfpClient.Modules.Users;
 using SkillProfi.WfpClient.Services.Auth;
+using SkillProfi.WfpClient.Services.Client;
 using SkillProfi.WfpClient.Services.Navigation;
 
 namespace SkillProfi.WfpClient;
@@ -37,7 +38,8 @@ public sealed partial class App : Application
 		services.AddBlogModule();
 		services.AddContactsModule();
 		services.AddUsersModule();
-		
+
+		services.AddScoped<IClient, AppClient>();
 		services.AddSingleton<IAuthService, AuthService>();
 		services.AddSingleton<INavigationService, NavigationService>();
 		services.AddSingleton<Func<Type, ViewModel>>(provider => viewModelType => (ViewModel)provider.GetRequiredService(viewModelType));

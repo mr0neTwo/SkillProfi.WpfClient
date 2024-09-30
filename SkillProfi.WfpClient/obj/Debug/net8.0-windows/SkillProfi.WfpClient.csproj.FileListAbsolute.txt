@@ -43,3 +43,5 @@ C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug
 C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Main\View\MainPage.g.cs
 C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Users\View\UsersPage.g.cs
 C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Layout\View\RootWindow.baml
+C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\bin\Debug\net8.0-windows\Flurl.dll
+C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\SkillProfi.WfpClient.sourcelink.json

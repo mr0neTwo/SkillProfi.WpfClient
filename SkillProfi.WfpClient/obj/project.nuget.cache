@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "G4AdTyXFCU0=",
+  "dgSpecHash": "c07zuSlkA2Y=",
   "success": true,
   "projectFilePath": "C:\\Users\\stasm\\RiderProjects\\SkillProfi.WpfClient\\SkillProfi.WfpClient\\SkillProfi.WfpClient.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\stasm\\.nuget\\packages\\flurl\\4.0.0\\flurl.4.0.0.nupkg.sha512",
     "C:\\Users\\stasm\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
     "C:\\Users\\stasm\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\stasm\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"

@@ -11,11 +11,22 @@
 >
     
     <Grid>
-        <TextBox 
-            Text="ClientRequestPage"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-        />
+        <DataGrid
+            ItemsSource="{Binding ClientRequests}" 
+            IsReadOnly="True"
+            AutoGenerateColumns="False"
+        >
+            <DataGrid.Columns>
+                
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Creation Date" Binding="{Binding CreationDate}" />
+                <DataGridTextColumn Header="Client Name" Binding="{Binding ClientName}" />
+                <DataGridTextColumn Header="Client Email" Binding="{Binding ClientEmail}" />
+                <DataGridTextColumn Header="Message" Binding="{Binding Message}" />
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" />
+                
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
     
 </Page>

@@ -1,42 +1,25 @@
-﻿using System.Net.Http;
-using System.Text;
-using Newtonsoft.Json;
-using SkillProfi.WfpClient.Common;
+﻿using SkillProfi.WfpClient.Common;
 using SkillProfi.WfpClient.Modules.Auth.Models;
-using JsonSerializer = System.Text.Json.JsonSerializer;
+using SkillProfi.WfpClient.Services.Client;
 
 namespace SkillProfi.WfpClient.Modules.Auth;
 
-public sealed class AuthApi : BaseApi
+public sealed class AuthApi(IClient client)
 {
 	public async Task<AuthResponse?> LoginAsync(UserLoginDto userLoginDto)
 	{
-		string jsonContent = JsonSerializer.Serialize(userLoginDto);
-		var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-		
-		HttpResponseMessage response = await Client.PostAsync("api/Auth/Login", content);
-		response.EnsureSuccessStatusCode();
-		
-		string responseBody = await response.Content.ReadAsStringAsync();
-		AuthResponse? authResponse = JsonConvert.DeserializeObject<AuthResponse>(responseBody);
+		AuthResponse? authResponse = await client.PostAsync<AuthResponse, UserLoginDto>(userLoginDto, "api/Auth/Login");
 
 		return authResponse;
 	}
 
 	public async Task<AuthResponse?> CheckAuth()
 	{
-		HttpResponseMessage response = await Client.GetAsync("api/Auth/Refresh");
-
-		response.EnsureSuccessStatusCode();
-		
-		string responseBody = await response.Content.ReadAsStringAsync();
-		AuthResponse? authResponse = JsonSerializer.Deserialize<AuthResponse>(responseBody);
-
-		return authResponse;
+		return await client.GetAsync<AuthResponse>("api/Auth/Refresh");
 	}
 
 	public async Task Logout()
 	{
-		HttpResponseMessage response = await Client.GetAsync("api/Auth/Logout");
+		await client.GetAsync<ApiResponseBody>("api/Auth/Logout");
 	}
 }
