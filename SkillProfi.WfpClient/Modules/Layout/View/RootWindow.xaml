@@ -33,6 +33,10 @@
             <request:ClientRequestPage/>
         </DataTemplate>
         
+        <DataTemplate DataType="{x:Type TypeName=request:ClientRequestEditorViewModel }">
+            <request:ClientRequestEditorPage/>
+        </DataTemplate>
+        
         <DataTemplate DataType="{x:Type TypeName=main:MainViewModel }">
             <main:MainPage/>
         </DataTemplate>

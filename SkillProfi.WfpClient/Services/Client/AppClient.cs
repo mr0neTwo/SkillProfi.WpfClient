@@ -3,7 +3,6 @@ using System.Text;
 using Flurl;
 using Newtonsoft.Json;
 using SkillProfi.WfpClient.Common;
-using SkillProfi.WfpClient.Modules.Auth.Models;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 
@@ -62,5 +61,14 @@ public sealed class AppClient : IClient
 		TResponseBody? body = JsonConvert.DeserializeObject<TResponseBody>(responseBody);
 
 		return body;
+	}
+
+	public async Task PutAsync<TRequest>(TRequest apiRequest, string url) 
+		where TRequest : ApiRequest
+	{
+		string jsonContent = JsonSerializer.Serialize(apiRequest);
+		var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+		
+		await Client.PutAsync(url, content);
 	}
 }

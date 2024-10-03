@@ -3,7 +3,7 @@ using SkillProfi.WfpClient.Services.Client;
 
 namespace SkillProfi.WfpClient.Modules.ClientRequests;
 
-public sealed class AppClientRequestApi(IClient client)
+public sealed class ClientRequestApi(IClient client)
 {
 	public async Task<GetClientRequestListResponse?> GetClientRequests(GetClientApiRequestListApiRequest request)
 	{
@@ -11,4 +11,15 @@ public sealed class AppClientRequestApi(IClient client)
 		
 		return response;
 	}
-}	
+
+	public async Task UpdateClientRequest(ClientRequest clientRequests)
+	{
+		UpdateClientRequestDto dto = new()
+		{
+			Id = clientRequests.Id, 
+			Status = clientRequests.Status,
+		};
+
+		await client.PutAsync(dto, "/api/ClientRequest/Update");
+	}
+}

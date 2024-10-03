@@ -4,29 +4,116 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:converter="clr-namespace:SkillProfi.WfpClient.Services.FormatConverter"
+    xmlns:local="clr-namespace:SkillProfi.WfpClient.Modules.ClientRequests"
     mc:Ignorable="d"
     Title="ClientRequest" 
     Height="600"
     Width="720"
 >
+    <Page.Resources>
+        <converter:TimestampToDateConverter x:Key="TimestampToDateConverter" />
+        <local:StatusEnumConverter x:Key="StatusEnumConverter"/>
+    </Page.Resources>
     
     <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="470" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        
+        <ComboBox 
+            Grid.Row="0"
+            Width="200"
+            Margin="10"
+            HorizontalAlignment="Left"
+            ItemsSource="{Binding DateRanges}" 
+            SelectedItem="{Binding SelectedDateRange, Mode=TwoWay}"
+        />
+        
         <DataGrid
+            Grid.Row="1"
             ItemsSource="{Binding ClientRequests}" 
             IsReadOnly="True"
             AutoGenerateColumns="False"
         >
+            <DataGrid.InputBindings>
+                
+                <MouseBinding 
+                    Gesture="LeftDoubleClick" 
+                    Command="{Binding ClientRequestDoubleClickCommand}"
+                    CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" 
+                />
+            </DataGrid.InputBindings>
+            
             <DataGrid.Columns>
                 
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
-                <DataGridTextColumn Header="Creation Date" Binding="{Binding CreationDate}" />
-                <DataGridTextColumn Header="Client Name" Binding="{Binding ClientName}" />
-                <DataGridTextColumn Header="Client Email" Binding="{Binding ClientEmail}" />
-                <DataGridTextColumn Header="Message" Binding="{Binding Message}" />
-                <DataGridTextColumn Header="Status" Binding="{Binding Status}" />
+                <DataGridTextColumn 
+                    Header="Id" 
+                    Width="20" 
+                    Binding="{Binding Id}" 
+                />
+                <DataGridTextColumn 
+                    Header="Дата создания" 
+                    Width="110" 
+                    Binding="{Binding CreationDate, Converter={StaticResource TimestampToDateConverter}}" 
+                />
+                <DataGridTextColumn 
+                    Header="Имя клиента" 
+                    Width="110" 
+                    Binding="{Binding ClientName}" 
+                />
+                <DataGridTextColumn 
+                    Header="Email" 
+                    Width="170" 
+                    Binding="{Binding ClientEmail}" 
+                />
+                <DataGridTextColumn 
+                    Header="Сообщение" 
+                    Width="180" 
+                    Binding="{Binding Message}" 
+                />
+                <DataGridTextColumn 
+                    Header="Статус" 
+                    Width="100" 
+                    Binding="{Binding Status, Converter={StaticResource StatusEnumConverter}}" 
+                />
                 
             </DataGrid.Columns>
         </DataGrid>
+        
+        <StackPanel
+            Grid.Row="2"
+            Orientation="Horizontal" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Center" 
+            Margin="10"
+        >
+            <Button 
+                Padding="8 4"
+                Content="&#x276E;" 
+                Command="{Binding PreviousPageCommand}" 
+            />
+            <TextBlock 
+                Text="{Binding PageNumber}" 
+                Margin="10 5 2 5" 
+            />
+            <TextBlock 
+                Text="из" 
+                Margin="5" 
+            />
+            <TextBlock 
+                Text="{Binding TotalPages}" 
+                Margin="2 5 10 5" 
+            />
+            <Button 
+                Padding="8 4"
+                Content="&#x276F;" 
+                Command="{Binding NextPageCommand}" 
+            />
+        </StackPanel>
     </Grid>
     
 </Page>

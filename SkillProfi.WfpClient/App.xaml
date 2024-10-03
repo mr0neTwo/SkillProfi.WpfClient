@@ -2,9 +2,15 @@
     x:Class="SkillProfi.WfpClient.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
->
+    xmlns:converter="clr-namespace:SkillProfi.WfpClient.Services.FormatConverter">
+    
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Common/Themes/CreateButton.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <converter:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
+        </ResourceDictionary>
     </Application.Resources>
     
 </Application>

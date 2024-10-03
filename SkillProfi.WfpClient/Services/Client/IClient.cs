@@ -14,4 +14,7 @@ public interface IClient
 	public Task<TResponseBody?> PostAsync<TResponseBody, TRequest>(TRequest apiRequest, string url)
 		where TResponseBody : ApiResponseBody
 		where TRequest : ApiRequest;
+
+	public Task PutAsync<TRequest>(TRequest dto, string url)
+		where TRequest : ApiRequest;
 }

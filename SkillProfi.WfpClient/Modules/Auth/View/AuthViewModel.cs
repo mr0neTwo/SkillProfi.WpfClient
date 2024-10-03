@@ -1,4 +1,5 @@
 ﻿using SkillProfi.WfpClient.Common;
+using SkillProfi.WfpClient.Common.UserControls;
 using SkillProfi.WfpClient.Modules.Auth.Models;
 using SkillProfi.WfpClient.Services.Auth;
 
@@ -35,6 +36,8 @@ public sealed class AuthViewModel(IAuthService authService) : ViewModel
 			OnPropertyChanged();
 		}
 	}
+
+	public InputViewModel LoginInput { get; set; } = new() { Label = "Введите текст", Required = true, Limit = 50 };
 
 	public DelegateCommand LoginCommand => new(Login);
 

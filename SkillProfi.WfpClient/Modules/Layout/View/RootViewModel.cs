@@ -34,6 +34,15 @@ public sealed class RootViewModel : ViewModel
 
 	private void OnLoginStatusChanged(bool loggedIn)
 	{
-		CurrentView = loggedIn ? _layoutViewModel : _authViewModel;
+		if (loggedIn)
+		{
+			_layoutViewModel.BeforeShown();
+			CurrentView = _layoutViewModel;
+		}
+		else
+		{
+			_authViewModel.BeforeShown();
+			CurrentView = _authViewModel;
+		}
 	}
 }

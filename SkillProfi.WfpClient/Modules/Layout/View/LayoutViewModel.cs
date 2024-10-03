@@ -35,9 +35,12 @@ public sealed class LayoutViewModel : ViewModel
 	public LayoutViewModel(INavigationService navigationService)
 	{
 		_navigationService = navigationService;
-		_navigationService.NavigateTo<ClientRequestViewModel>();
 	}
 
+	protected override void OnBeforeShown()
+	{
+		_navigationService.NavigateTo<ClientRequestViewModel>();
+	}
 
 	private void SelectRequests(object obj)
 	{

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SkillProfi.WfpClient")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d9f14c80a8bc197925ad6d0c6cbc0e851289960")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+57625ddb6c7a9cb1569642bb1ddbd393e5115ca8")]
 [assembly: System.Reflection.AssemblyProductAttribute("SkillProfi.WfpClient")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SkillProfi.WfpClient")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

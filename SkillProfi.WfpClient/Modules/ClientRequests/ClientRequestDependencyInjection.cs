@@ -8,7 +8,8 @@ public static class ClientRequestDependencyInjection
 	public static IServiceCollection AddClientRequestModule(this IServiceCollection services)
 	{
 		services.AddSingleton<ClientRequestViewModel>();
-		services.AddSingleton<AppClientRequestApi>();
+		services.AddSingleton<ClientRequestEditorViewModel>();
+		services.AddSingleton<ClientRequestApi>();
 		
 		return services;
 	}
