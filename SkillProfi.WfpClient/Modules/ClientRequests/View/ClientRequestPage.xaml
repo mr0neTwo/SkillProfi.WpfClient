@@ -13,7 +13,7 @@
 >
     <Page.Resources>
         <converter:TimestampToDateConverter x:Key="TimestampToDateConverter" />
-        <local:StatusEnumConverter x:Key="StatusEnumConverter"/>
+        <local:StatusValueConverter x:Key="StatusEnumConverter"/>
     </Page.Resources>
     
     <Grid>

@@ -4,7 +4,7 @@ using SkillProfi.WfpClient.Modules.ClientRequests.Models;
 
 namespace SkillProfi.WfpClient.Modules.ClientRequests;
 
-public sealed class StatusEnumConverter : IValueConverter
+public sealed class StatusValueConverter : IValueConverter
 {
 	public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 	{

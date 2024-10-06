@@ -15,6 +15,11 @@ public interface IClient
 		where TResponseBody : ApiResponseBody
 		where TRequest : ApiRequest;
 
+	public Task PostVoidAsync<TRequest>(TRequest apiRequest, string url) 
+		where TRequest : ApiRequest;
+
 	public Task PutAsync<TRequest>(TRequest dto, string url)
 		where TRequest : ApiRequest;
+
+	public Task DeleteAsync(int id, string url);
 }

@@ -62,8 +62,8 @@ public sealed class ClientRequestViewModel : ViewModel
 	private long _startTime;
 	private long _endTime;
 	private readonly ClientRequestApi _api;
-	private INavigationService _navigationService;
-	private ClientRequestEditorViewModel _editorViewModel;
+	private readonly INavigationService _navigationService;
+	private readonly ClientRequestEditorViewModel _editorViewModel;
 
 	public ClientRequestViewModel(ClientRequestApi api, INavigationService navigationService, ClientRequestEditorViewModel editorViewModel)
 	{

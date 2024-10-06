@@ -7,7 +7,9 @@ public static class ServicesDependencyInjection
 {
 	public static IServiceCollection AddServicesModule(this IServiceCollection services)
 	{
+		services.AddSingleton<ServicesApi>();
 		services.AddSingleton<ServicesViewModel>();
+		services.AddSingleton<ServiceEditorViewModel>();
 		
 		return services;
 	}

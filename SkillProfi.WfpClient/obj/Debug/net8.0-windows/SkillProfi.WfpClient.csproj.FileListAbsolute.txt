@@ -51,3 +51,5 @@ C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug
 C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\App.baml
 C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\ClientRequests\View\ClientRequestEditorPage.baml
 C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\ClientRequests\View\ClientRequestEditorPage.g.cs
+C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Services\View\ServiceEditorPage.baml
+C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Services\View\ServiceEditorPage.g.cs

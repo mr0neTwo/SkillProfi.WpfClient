@@ -45,6 +45,10 @@
             <service:ServicesPage/>
         </DataTemplate>
         
+        <DataTemplate DataType="{x:Type TypeName=service:ServiceEditorViewModel }">
+            <service:ServiceEditorPage/>
+        </DataTemplate>
+        
         <DataTemplate DataType="{x:Type TypeName=project:ProjectsViewModel }">
             <project:ProjectsPage/>
         </DataTemplate>

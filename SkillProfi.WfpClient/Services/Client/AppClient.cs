@@ -62,6 +62,15 @@ public sealed class AppClient : IClient
 
 		return body;
 	}
+	
+	public async Task PostVoidAsync<TRequest>(TRequest apiRequest, string url)
+		where TRequest : ApiRequest
+	{
+		string jsonContent = JsonSerializer.Serialize(apiRequest);
+		var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+		
+		await Client.PostAsync(url, content);
+	}
 
 	public async Task PutAsync<TRequest>(TRequest apiRequest, string url) 
 		where TRequest : ApiRequest
@@ -70,5 +79,10 @@ public sealed class AppClient : IClient
 		var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 		
 		await Client.PutAsync(url, content);
+	}
+
+	public async Task DeleteAsync(int id, string url)
+	{
+		await Client.DeleteAsync($"{url}/{id}");
 	}
 }

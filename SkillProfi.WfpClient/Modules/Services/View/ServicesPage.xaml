@@ -10,10 +10,103 @@
     Width="720"
 >
     <Grid>
-        <TextBox 
-            Text="ServicesPage"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="470" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        
+        <Button
+            Grid.Row="0"
+            Content="Новая услуга"
+            HorizontalAlignment="Left"
+            Margin="20 0 0 0"
+            Style="{StaticResource CreateButtonStyle}"
+            Command="{Binding CreateServiceCommand}"
         />
+        
+        <ItemsControl 
+            Grid.Row="1"
+            ItemsSource="{Binding Services}"
+            VerticalAlignment="Top" 
+        >
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel 
+                        Orientation="Horizontal" 
+                        Margin="20 0 0 0"
+                    >
+                        <Expander 
+                            Header="{Binding Title}"
+                            Background="#FF19659F"
+                            BorderBrush="#FF19659F"
+                            Foreground="White"
+                            Width="500"
+                            BorderThickness="1"
+                            Margin="5"
+                        >
+                            <TextBlock 
+                                Text="{Binding Description}"
+                                TextWrapping="Wrap"
+                                Padding="10"
+                            />
+                        </Expander>
+                        <Button
+                            FontFamily="Segoe MDL2 Assets"
+                            Content="&#xE70F;" 
+                            Command="{Binding DataContext.EditServiceCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                            CommandParameter="{Binding}"
+                            Width="20"
+                            Height="20"
+                            Margin="5"
+                            ToolTip="Edit"
+                        />
+                        <Button 
+                            FontFamily="Segoe MDL2 Assets"
+                            Content="&#xE74D;" 
+                            Command="{Binding DataContext.DeleteServiceCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                            CommandParameter="{Binding}"
+                            Width="20"
+                            Height="20"
+                            Margin="5"
+                            ToolTip="Delete"
+                        />
+                    </StackPanel>
+                </DataTemplate>
+                
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        
+        <StackPanel
+            Grid.Row="2"
+            Orientation="Horizontal" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Bottom" 
+            Margin="10"
+        >
+            <Button 
+                Padding="8 4"
+                Content="&#x276E;" 
+                Command="{Binding PreviousPageCommand}" 
+            />
+            <TextBlock 
+                Text="{Binding PageNumber}" 
+                Margin="10 5 2 5" 
+            />
+            <TextBlock 
+                Text="из" 
+                Margin="5" 
+            />
+            <TextBlock 
+                Text="{Binding TotalPages}" 
+                Margin="2 5 10 5" 
+            />
+            <Button 
+                Padding="8 4"
+                Content="&#x276F;" 
+                Command="{Binding NextPageCommand}" 
+            />
+        </StackPanel>
     </Grid>
 </Page>

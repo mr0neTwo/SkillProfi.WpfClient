@@ -1,0 +1,78 @@
+﻿<Page 
+    x:Class="SkillProfi.WfpClient.Modules.Services.View.ServiceEditorPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:formatConverter="clr-namespace:SkillProfi.WfpClient.Services.FormatConverter"
+    mc:Ignorable="d"
+    Title="ServiceEditor" 
+    Height="600" 
+    Width="720"
+>
+    <Page.Resources>
+        <formatConverter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <formatConverter:BoolToBrushConverter x:Key="BoolToBrushConverter"/>
+    </Page.Resources>
+    
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="520"/>
+            <RowDefinition Height="40"/>
+            
+        </Grid.RowDefinitions>
+        
+        <StackPanel 
+            Grid.Row="0"
+            Margin="20 0 0 0"
+        >
+            <TextBlock Text="Заголовок"/>
+            <TextBox 
+                Width="300"
+                HorizontalAlignment="Left"
+                BorderBrush="{Binding IsTittleCorrect, Converter={StaticResource BoolToBrushConverter}}"
+                Text="{Binding Service.Title}"
+            />
+            
+            <TextBlock Text="Описание"/>
+            <TextBox 
+                Width="600" 
+                Height="150" 
+                AcceptsReturn="True" 
+                TextWrapping="Wrap" 
+                HorizontalAlignment="Left"
+                BorderBrush="{Binding IsDescriptionCorrect, Converter={StaticResource BoolToBrushConverter}}"
+                Text="{Binding Service.Description}"
+            />
+        </StackPanel>
+        
+        <StackPanel 
+            Grid.Row="1"
+            Orientation="Horizontal"
+            Margin="5"
+        >
+            <Button
+                Margin="5 0"
+                Padding="8 4"
+                Content="Создать"
+                Command="{Binding CreateCommand}"
+                Visibility="{Binding ShowCreateButton, Converter={StaticResource BoolToVisibilityConverter}}"
+            />
+            <Button
+                Margin="5 0"
+                Padding="8 4"
+                Content="Сохранить"
+                Command="{Binding SaveCommand}"
+                Visibility="{Binding ShowSaveButton, Converter={StaticResource BoolToVisibilityConverter}}"
+            />
+            <Button
+                Margin="5 0"
+                Padding="8 4"
+                Content="Назад"
+                Command="{Binding GoBackCommand}"
+            />
+        </StackPanel>
+        
+    </Grid>
+</Page>
