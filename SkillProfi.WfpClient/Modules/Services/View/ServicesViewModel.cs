@@ -5,44 +5,19 @@ using SkillProfi.WfpClient.Services.Navigation;
 
 namespace SkillProfi.WfpClient.Modules.Services.View;
 
-public sealed class ServicesViewModel(ServicesApi servicesApi, INavigationService navigationService, ServiceEditorViewModel serviceEditorViewModel) : ViewModel
+public sealed class ServicesViewModel(ServicesApi servicesApi, INavigationService navigationService, ServiceEditorViewModel serviceEditorViewModel) : PaginatedViewModel
 {
 	public ObservableCollection<Service> Services { get; set; } = new();
-
-	public int PageNumber
-	{
-		get => _pageNumber;
-		set
-		{
-			_pageNumber = value;
-			OnPropertyChanged();
-			UpdateServices();
-		}
-	}
-	
-	public int TotalPages
-	{
-		get => _totalPages;
-		set
-		{
-			_totalPages = value;
-			OnPropertyChanged();
-		}
-	}
 
 	public DelegateCommand CreateServiceCommand => new(CreateService);
 	public DelegateCommand EditServiceCommand => new(EditService);
 	public DelegateCommand DeleteServiceCommand => new(DeleteService);
-	public DelegateCommand NextPageCommand => new(NextPage, CanNextPage);
-	public DelegateCommand PreviousPageCommand => new(PreviousPage, CanPreviousPage);
-
-	private int _pageNumber = 1;
-	private int _totalPages = 1;
+	
 	private readonly int _pageSize = 14;
 
 	protected override void OnBeforeShown()
 	{
-		UpdateServices();
+		UpdateData();
 	}
 
 	private void CreateService(object obj)
@@ -66,35 +41,15 @@ public sealed class ServicesViewModel(ServicesApi servicesApi, INavigationServic
 		if (obj is Service service)
 		{
 			await servicesApi.Delete(service.Id);
-			UpdateServices();
+			UpdateData();
 		}
 	}
 
-	private void NextPage(object obj)
-	{
-		PageNumber++;
-	}
-
-	private bool CanNextPage(object obj)
-	{
-		return PageNumber < TotalPages;
-	}
-	
-	private void PreviousPage(object obj)
-	{
-		PageNumber--;
-	}
-
-	private bool CanPreviousPage(object obj)
-	{
-		return PageNumber > 1;
-	}
-
-	private async void UpdateServices()
+	protected override async void UpdateData()
 	{
 		GetServiceListRequest request = new()
 		{
-			PageNumber = _pageNumber,
+			PageNumber = PageNumber,
 			PageSize = _pageSize
 		};
 		

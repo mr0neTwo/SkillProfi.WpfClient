@@ -5,7 +5,7 @@ using SkillProfi.WfpClient.Services.Navigation;
 
 namespace SkillProfi.WfpClient.Modules.ClientRequests.View;
 
-public sealed class ClientRequestViewModel : ViewModel
+public sealed class ClientRequestViewModel : PaginatedViewModel
 {
 	public ObservableCollection<ClientRequest> ClientRequests { get; set; }
 	public ObservableCollection<string> DateRanges { get; set; }
@@ -18,47 +18,15 @@ public sealed class ClientRequestViewModel : ViewModel
 			_selectedDateRange = value;
 			OnPropertyChanged();
 			UpdateDateRange();
-			UpdateClientRequests();
+			UpdateData();
 		}
 	}
 
-	public int PageNumber
-	{
-		get => _pageNumber;
-		set
-		{
-			int newValue = Math.Clamp(value, 1, TotalPages);
-
-			if (newValue == _pageNumber)
-			{
-				return;
-			}
-
-			_pageNumber = value;
-			OnPropertyChanged();
-			UpdateClientRequests();
-		}
-	}
-
-	public int TotalPages
-	{
-		get => _totalPages;
-		set
-		{
-			_totalPages = value;
-			OnPropertyChanged();
-		}
-	}
-
-	public DelegateCommand NextPageCommand => new(obj => PageNumber++, obj => PageNumber < TotalPages);
-	public DelegateCommand PreviousPageCommand => new(obj => PageNumber--, obj => PageNumber > 1);
 	public DelegateCommand ClientRequestDoubleClickCommand => new(OnClientRequestDoubleClick);
 
 	private const int PageSize = 23;
-
-	private int _pageNumber;
-	private int _totalPages;
-	private string _selectedDateRange;
+	
+	private string _selectedDateRange = string.Empty;
 	private long _startTime;
 	private long _endTime;
 	private readonly ClientRequestApi _api;
@@ -71,8 +39,6 @@ public sealed class ClientRequestViewModel : ViewModel
 		_navigationService = navigationService;
 		_api = api;
 		
-		_pageNumber = 1;
-		_totalPages = 1;
 		_startTime = 0;
 		_endTime = TimestampUtils.GetEndOfDayTimestamp();
 
@@ -83,7 +49,7 @@ public sealed class ClientRequestViewModel : ViewModel
 
 	protected override void OnBeforeShown()
 	{
-		UpdateClientRequests();
+		UpdateData();
 	}
 
 	private void OnClientRequestDoubleClick(object selectedItem)
@@ -134,8 +100,8 @@ public sealed class ClientRequestViewModel : ViewModel
 			}
 		}
 	}
-
-	private async void UpdateClientRequests()
+	
+	protected override async void UpdateData()
 	{
 		GetClientApiRequestListApiRequest request = new()
 		{

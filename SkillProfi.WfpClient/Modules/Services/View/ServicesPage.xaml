@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:userControls="clr-namespace:SkillProfi.WfpClient.Common.UserControls"
     mc:Ignorable="d"
     Title="Services" 
     Height="600" 
@@ -53,23 +54,17 @@
                             />
                         </Expander>
                         <Button
-                            FontFamily="Segoe MDL2 Assets"
                             Content="&#xE70F;" 
+                            Style="{StaticResource IconButtonStyle}"
                             Command="{Binding DataContext.EditServiceCommand, RelativeSource={RelativeSource AncestorType=Page}}"
                             CommandParameter="{Binding}"
-                            Width="20"
-                            Height="20"
-                            Margin="5"
                             ToolTip="Edit"
                         />
                         <Button 
-                            FontFamily="Segoe MDL2 Assets"
                             Content="&#xE74D;" 
+                            Style="{StaticResource IconButtonStyle}"
                             Command="{Binding DataContext.DeleteServiceCommand, RelativeSource={RelativeSource AncestorType=Page}}"
                             CommandParameter="{Binding}"
-                            Width="20"
-                            Height="20"
-                            Margin="5"
                             ToolTip="Delete"
                         />
                     </StackPanel>
@@ -78,35 +73,9 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
         
-        <StackPanel
-            Grid.Row="2"
-            Orientation="Horizontal" 
-            HorizontalAlignment="Left" 
-            VerticalAlignment="Bottom" 
-            Margin="10"
-        >
-            <Button 
-                Padding="8 4"
-                Content="&#x276E;" 
-                Command="{Binding PreviousPageCommand}" 
-            />
-            <TextBlock 
-                Text="{Binding PageNumber}" 
-                Margin="10 5 2 5" 
-            />
-            <TextBlock 
-                Text="из" 
-                Margin="5" 
-            />
-            <TextBlock 
-                Text="{Binding TotalPages}" 
-                Margin="2 5 10 5" 
-            />
-            <Button 
-                Padding="8 4"
-                Content="&#x276F;" 
-                Command="{Binding NextPageCommand}" 
-            />
-        </StackPanel>
+        <userControls:PaginationControl 
+            Grid.Row="2" 
+            DataContext="{Binding}" 
+        />
     </Grid>
 </Page>

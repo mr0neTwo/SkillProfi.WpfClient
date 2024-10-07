@@ -79,6 +79,14 @@ public sealed class ServiceEditorViewModel(INavigationService navigationService,
 	private bool _isTitleCorrect = true;
 	private bool _isDescriptionCorrect = true;
 
+	protected override void OnBeforeShown()
+	{
+		if (!EditMode)
+		{
+			Service = new Service();
+		}
+	}
+
 	private async void Create(object obj)
 	{
 		if (!ValidateField())

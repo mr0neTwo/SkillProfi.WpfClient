@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:converter="clr-namespace:SkillProfi.WfpClient.Services.FormatConverter"
     xmlns:local="clr-namespace:SkillProfi.WfpClient.Modules.ClientRequests"
+    xmlns:userControls="clr-namespace:SkillProfi.WfpClient.Common.UserControls"
     mc:Ignorable="d"
     Title="ClientRequest" 
     Height="600"
@@ -84,36 +85,10 @@
             </DataGrid.Columns>
         </DataGrid>
         
-        <StackPanel
-            Grid.Row="2"
-            Orientation="Horizontal" 
-            HorizontalAlignment="Left" 
-            VerticalAlignment="Center" 
-            Margin="10"
-        >
-            <Button 
-                Padding="8 4"
-                Content="&#x276E;" 
-                Command="{Binding PreviousPageCommand}" 
-            />
-            <TextBlock 
-                Text="{Binding PageNumber}" 
-                Margin="10 5 2 5" 
-            />
-            <TextBlock 
-                Text="из" 
-                Margin="5" 
-            />
-            <TextBlock 
-                Text="{Binding TotalPages}" 
-                Margin="2 5 10 5" 
-            />
-            <Button 
-                Padding="8 4"
-                Content="&#x276F;" 
-                Command="{Binding NextPageCommand}" 
-            />
-        </StackPanel>
+        <userControls:PaginationControl 
+            Grid.Row="2" 
+            DataContext="{Binding}" 
+        />
     </Grid>
     
 </Page>

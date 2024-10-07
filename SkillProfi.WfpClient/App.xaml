@@ -6,10 +6,14 @@
     
     <Application.Resources>
         <ResourceDictionary>
+            
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Common/Themes/CreateButton.xaml"/>
+                <ResourceDictionary Source="../Common/Themes/IconButton.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            
             <converter:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
+            
         </ResourceDictionary>
     </Application.Resources>
     
