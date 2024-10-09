@@ -49,7 +49,12 @@ public sealed class ClientRequestViewModel : PaginatedViewModel
 
 	protected override void OnBeforeShown()
 	{
-		UpdateData();
+		_ = UpdateClientRequests();
+	}
+
+	protected override void UpdateData()
+	{
+		_ = UpdateClientRequests();
 	}
 
 	private void OnClientRequestDoubleClick(object selectedItem)
@@ -100,8 +105,8 @@ public sealed class ClientRequestViewModel : PaginatedViewModel
 			}
 		}
 	}
-	
-	protected override async void UpdateData()
+
+	private async Task UpdateClientRequests()
 	{
 		GetClientApiRequestListApiRequest request = new()
 		{

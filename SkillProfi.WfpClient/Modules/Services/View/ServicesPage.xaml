@@ -27,51 +27,56 @@
             Command="{Binding CreateServiceCommand}"
         />
         
-        <ItemsControl 
-            Grid.Row="1"
-            ItemsSource="{Binding Services}"
-            VerticalAlignment="Top" 
+        <ScrollViewer 
+            Grid.Row="1" 
+            VerticalScrollBarVisibility="Auto"
         >
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel 
-                        Orientation="Horizontal" 
-                        Margin="20 0 0 0"
-                    >
-                        <Expander 
-                            Header="{Binding Title}"
-                            Background="#FF19659F"
-                            BorderBrush="#FF19659F"
-                            Foreground="White"
-                            Width="500"
-                            BorderThickness="1"
-                            Margin="5"
+            <ItemsControl 
+                ItemsSource="{Binding Services}"
+                VerticalAlignment="Top" 
+            >
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                       
+                        <StackPanel 
+                            Orientation="Horizontal" 
+                            Margin="20 0 0 0"
                         >
-                            <TextBlock 
-                                Text="{Binding Description}"
-                                TextWrapping="Wrap"
-                                Padding="10"
+                            <Expander 
+                                Header="{Binding Title}"
+                                Background="#FF19659F"
+                                BorderBrush="#FF19659F"
+                                Foreground="White"
+                                Width="500"
+                                BorderThickness="1"
+                                Margin="5"
+                            >
+                                <TextBlock 
+                                    Text="{Binding Description}"
+                                    TextWrapping="Wrap"
+                                    Padding="10"
+                                />
+                            </Expander>
+                            <Button
+                                Content="&#xE70F;" 
+                                Style="{StaticResource IconButtonStyle}"
+                                Command="{Binding DataContext.EditServiceCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                CommandParameter="{Binding}"
+                                ToolTip="Edit"
                             />
-                        </Expander>
-                        <Button
-                            Content="&#xE70F;" 
-                            Style="{StaticResource IconButtonStyle}"
-                            Command="{Binding DataContext.EditServiceCommand, RelativeSource={RelativeSource AncestorType=Page}}"
-                            CommandParameter="{Binding}"
-                            ToolTip="Edit"
-                        />
-                        <Button 
-                            Content="&#xE74D;" 
-                            Style="{StaticResource IconButtonStyle}"
-                            Command="{Binding DataContext.DeleteServiceCommand, RelativeSource={RelativeSource AncestorType=Page}}"
-                            CommandParameter="{Binding}"
-                            ToolTip="Delete"
-                        />
-                    </StackPanel>
-                </DataTemplate>
-                
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+                            <Button 
+                                Content="&#xE74D;" 
+                                Style="{StaticResource IconButtonStyle}"
+                                Command="{Binding DataContext.DeleteServiceCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                CommandParameter="{Binding}"
+                                ToolTip="Delete"
+                            />
+                        </StackPanel>
+                    </DataTemplate>
+                    
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
         
         <userControls:PaginationControl 
             Grid.Row="2" 

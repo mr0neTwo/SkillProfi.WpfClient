@@ -87,7 +87,12 @@ public sealed class ServiceEditorViewModel(INavigationService navigationService,
 		}
 	}
 
-	private async void Create(object obj)
+	private void Create(object obj)
+	{
+		_ = CreateAsync();
+	}
+
+	private async Task CreateAsync()
 	{
 		if (!ValidateField())
 		{
@@ -105,7 +110,12 @@ public sealed class ServiceEditorViewModel(INavigationService navigationService,
 		return !_isLoading;
 	}
 	
-	private async void Save(object obj)
+	private void Save(object obj)
+	{
+		_ = SaveAsync();
+	}
+
+	private async Task SaveAsync()
 	{
 		if (!ValidateField())
 		{

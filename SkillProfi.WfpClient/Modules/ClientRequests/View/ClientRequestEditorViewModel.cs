@@ -38,7 +38,12 @@ public sealed class ClientRequestEditorViewModel(INavigationService navigationSe
 	private string _selectedStatus = string.Empty;
 	private bool _isLoading;
 
-	private async void Save(object obj)
+	private void Save(object obj)
+	{
+		_ = SaveAsync();
+	}
+
+	private async Task SaveAsync()
 	{
 		_isLoading = true;
 		await api.UpdateClientRequest(ClientRequest);

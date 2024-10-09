@@ -36,16 +36,26 @@ public sealed class ServicesViewModel(ServicesApi servicesApi, INavigationServic
 		}
 	}
 	
-	private async void DeleteService(object obj)
+	private void DeleteService(object obj)
 	{
 		if (obj is Service service)
 		{
-			await servicesApi.Delete(service.Id);
-			UpdateData();
+			_ = DeleteAsync(service);
 		}
 	}
 
-	protected override async void UpdateData()
+	private async Task DeleteAsync(Service service)
+	{
+		await servicesApi.Delete(service.Id);
+		await UpdateServices();
+	}
+
+	protected override void UpdateData()
+	{
+		_ = UpdateServices();
+	}
+
+	private async Task UpdateServices()
 	{
 		GetServiceListRequest request = new()
 		{

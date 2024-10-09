@@ -22,10 +22,10 @@ public sealed class MainViewModel(SiteItemApi siteItemApi) : ViewModel
 
 	protected override void OnBeforeShown()
 	{
-		UpdateSiteItems();
+		_ = UpdateSiteItems();
 	}
 
-	private async void UpdateSiteItems()
+	private async Task UpdateSiteItems()
 	{
 		Dictionary<string, string> siteItems = await siteItemApi.GetAllAsync() ?? new Dictionary<string, string>();
 		SiteItems = siteItems;
@@ -33,7 +33,12 @@ public sealed class MainViewModel(SiteItemApi siteItemApi) : ViewModel
 		OnPropertyChanged(nameof(SiteItems));
 	}
 
-	private async void Save(object obj)
+	private void Save(object obj)
+	{
+		_ = SaveAsync();
+	}
+
+	private async Task SaveAsync()
 	{
 		Dictionary<string, string> siteItemsToUpdate = new();
 
@@ -52,8 +57,8 @@ public sealed class MainViewModel(SiteItemApi siteItemApi) : ViewModel
 		
 		_isLoading = true;
 		await siteItemApi.UpdateAllAsync(siteItemsToUpdate);
+		await UpdateSiteItems();
 		_isLoading = false;
-		UpdateSiteItems();
 	}
 
 	private bool CanSave(object obj)

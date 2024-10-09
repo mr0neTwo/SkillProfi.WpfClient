@@ -45,7 +45,12 @@ public sealed class AuthViewModel(IAuthService authService) : ViewModel
 	private string _password = "123456";
 	private string _error = string.Empty;
 
-	private async void Login(object obj)
+	private void Login(object obj)
+	{
+		_ = LoginAsync();
+	}
+
+	private async Task LoginAsync()
 	{
 		UserLoginDto userLoginDto = new()
 		{
@@ -58,7 +63,7 @@ public sealed class AuthViewModel(IAuthService authService) : ViewModel
 		if (result != null && result.Success)
 		{
 			ResetForms();
-			
+
 			return;
 		}
 		
