@@ -20,7 +20,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="520"/>
             <RowDefinition Height="40"/>
-            
         </Grid.RowDefinitions>
         
         <StackPanel 

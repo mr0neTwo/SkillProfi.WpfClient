@@ -7,6 +7,7 @@ public static class MainDependencyInjection
 {
 	public static IServiceCollection AddMainModule(this IServiceCollection services)
 	{
+		services.AddSingleton<SiteItemApi>();
 		services.AddSingleton<MainViewModel>();
 		
 		return services;

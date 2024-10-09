@@ -1,5 +1,5 @@
 ﻿namespace SkillProfi.WfpClient.Common;
 
-public abstract class ApiRequest
+public interface IApiRequest
 {
 }

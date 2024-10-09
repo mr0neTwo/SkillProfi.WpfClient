@@ -19,8 +19,8 @@ public sealed class AppClient : IClient
 	}
 
 	public async Task<TResponseBody?> GetAsync<TResponseBody, TRequest>(TRequest request, string url)
-		where TResponseBody : ApiResponseBody
-		where TRequest : ApiRequest
+		where TResponseBody : IApiResponse
+		where TRequest : IApiRequest
 	{
 		Url requestUri = url.SetQueryParams(request);
 
@@ -28,13 +28,12 @@ public sealed class AppClient : IClient
 	}
 	
 	public async Task<TResponseBody?> GetAsync<TResponseBody>(string url)
-		where TResponseBody : ApiResponseBody
 	{
 		HttpResponseMessage response = await Client.GetAsync(url);
 
 		if (!response.IsSuccessStatusCode)
 		{
-			return null;
+			return default;
 		}
 		
 		string responseBody = await response.Content.ReadAsStringAsync();
@@ -44,8 +43,8 @@ public sealed class AppClient : IClient
 	}
 
 	public async Task<TResponseBody?> PostAsync<TResponseBody, TRequest>(TRequest apiRequest, string url)
-		where TResponseBody : ApiResponseBody
-		where TRequest : ApiRequest
+		where TResponseBody : IApiResponse
+		where TRequest : IApiRequest
 	{
 		string jsonContent = JsonSerializer.Serialize(apiRequest);
 		var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
@@ -54,7 +53,7 @@ public sealed class AppClient : IClient
 
 		if (!response.IsSuccessStatusCode)
 		{
-			return null;
+			return default;
 		}
 		
 		string responseBody = await response.Content.ReadAsStringAsync();
@@ -64,7 +63,7 @@ public sealed class AppClient : IClient
 	}
 	
 	public async Task PostVoidAsync<TRequest>(TRequest apiRequest, string url)
-		where TRequest : ApiRequest
+		where TRequest : IApiRequest
 	{
 		string jsonContent = JsonSerializer.Serialize(apiRequest);
 		var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
@@ -73,7 +72,6 @@ public sealed class AppClient : IClient
 	}
 
 	public async Task PutAsync<TRequest>(TRequest apiRequest, string url) 
-		where TRequest : ApiRequest
 	{
 		string jsonContent = JsonSerializer.Serialize(apiRequest);
 		var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");

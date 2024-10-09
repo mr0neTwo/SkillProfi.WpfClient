@@ -8,7 +8,6 @@ using SkillProfi.WfpClient.Modules.Contacts;
 using SkillProfi.WfpClient.Modules.Layout;
 using SkillProfi.WfpClient.Modules.Layout.View;
 using SkillProfi.WfpClient.Modules.Main;
-using SkillProfi.WfpClient.Modules.Main.View;
 using SkillProfi.WfpClient.Modules.Projects;
 using SkillProfi.WfpClient.Modules.Services;
 using SkillProfi.WfpClient.Modules.Users;

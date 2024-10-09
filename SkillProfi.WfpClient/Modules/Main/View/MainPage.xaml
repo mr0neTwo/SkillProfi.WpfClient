@@ -10,10 +10,114 @@
     Width="720"
 >
     <Grid>
-        <TextBox 
-            Text="MainPage"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-        />
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="520"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel 
+            Grid.Row="0"
+            Margin="20 0 0 0"
+        >
+            
+            <TextBlock 
+                Text="Цитата шапки"
+                Margin="0 15 0 0"
+            />
+            <TextBox 
+                Width="600"
+                Style="{StaticResource InputStyle}"
+                Text="{Binding SiteItems[TitleQuote]}"
+            />
+            
+            <TextBlock 
+                Text="Цитата главной страницы"
+                Margin="0 15 0 0"
+            />
+            <TextBox 
+                Width="600"
+                Style="{StaticResource InputStyle}"
+                Text="{Binding SiteItems[MainQuote]}"
+            />
+            
+            <TextBlock 
+                Text="Меню: Обращения"
+                Margin="0 15 0 0"
+            />
+            <TextBox 
+                Style="{StaticResource InputStyle}"
+                Text="{Binding SiteItems[Messages]}"
+            />
+            
+            <TextBlock 
+                Text="Меню: Главная"
+                Margin="0 15 0 0"
+            />
+            <TextBox 
+                Style="{StaticResource InputStyle}"
+                Text="{Binding SiteItems[Main]}"
+            />
+            
+            <TextBlock 
+                Text="Меню: Услуги"
+                Margin="0 15 0 0"
+            />
+            <TextBox 
+                Style="{StaticResource InputStyle}"
+                Text="{Binding SiteItems[Services]}"
+            />
+            
+            <TextBlock 
+                Text="Меню: Проекты"
+                Margin="0 15 0 0"
+            />
+            <TextBox 
+                Style="{StaticResource InputStyle}"
+                Text="{Binding SiteItems[Projects]}"
+            />
+            
+            <TextBlock 
+                Text="Меню: Блог"
+                Margin="0 15 0 0"
+            />
+            <TextBox 
+                Style="{StaticResource InputStyle}"
+                Text="{Binding SiteItems[Blog]}"
+            />
+            
+            <TextBlock 
+                Text="Меню: Контакты"
+                Margin="0 15 0 0"
+            />
+            <TextBox 
+                Style="{StaticResource InputStyle}"
+                Text="{Binding SiteItems[Contacts]}"
+            />
+            
+            <TextBlock 
+                Text="Меню: Пользователи"
+                Margin="0 15 0 0"
+            />
+            <TextBox 
+                Style="{StaticResource InputStyle}"
+                Text="{Binding SiteItems[Users], Mode=TwoWay}"
+            />
+            
+        </StackPanel>
+        
+        <StackPanel 
+            Grid.Row="1"
+            Orientation="Horizontal"
+            Margin="5"
+        >
+            <Button
+                Margin="5 0"
+                Padding="8 4"
+                Content="Сохранить"
+                Command="{Binding SaveCommand}"
+            />
+        </StackPanel>
+        
     </Grid>
 </Page>

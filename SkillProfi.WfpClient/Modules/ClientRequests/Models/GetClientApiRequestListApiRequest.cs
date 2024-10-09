@@ -2,7 +2,7 @@
 
 namespace SkillProfi.WfpClient.Modules.ClientRequests.Models;
 
-public sealed class GetClientApiRequestListApiRequest : ApiRequest
+public sealed class GetClientApiRequestListApiRequest : IApiRequest
 {
 	public long StartTimestamp { get; set; }
 	public long EndTimeStamp { get; set; }

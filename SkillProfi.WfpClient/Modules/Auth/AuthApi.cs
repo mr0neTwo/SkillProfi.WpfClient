@@ -20,6 +20,6 @@ public sealed class AuthApi(IClient client)
 
 	public async Task Logout()
 	{
-		await client.GetAsync<ApiResponseBody>("api/Auth/Logout");
+		await client.GetAsync<IApiResponse>("api/Auth/Logout");
 	}
 }

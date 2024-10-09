@@ -56,3 +56,4 @@ C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug
 C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Common\Themes\IconButton.baml
 C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Common\UserControls\PaginationControl.baml
 C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Common\UserControls\PaginationControl.g.cs
+C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Common\Themes\Input.baml
