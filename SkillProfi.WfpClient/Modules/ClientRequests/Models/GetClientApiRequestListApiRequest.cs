@@ -1,8 +1,6 @@
-﻿using SkillProfi.WfpClient.Common;
+﻿namespace SkillProfi.WfpClient.Modules.ClientRequests.Models;
 
-namespace SkillProfi.WfpClient.Modules.ClientRequests.Models;
-
-public sealed class GetClientApiRequestListApiRequest : IApiRequest
+public sealed class GetClientApiRequestListApiRequest
 {
 	public long StartTimestamp { get; set; }
 	public long EndTimeStamp { get; set; }

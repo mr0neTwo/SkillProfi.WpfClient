@@ -15,12 +15,10 @@ public sealed class AppClient : IClient
 	public AppClient()
 	{
 		Client = new HttpClient();
-		Client.BaseAddress = new Uri("http://localhost:5272/");
+		Client.BaseAddress = new Uri(AppVariables.BaseUrl);
 	}
 
 	public async Task<TResponseBody?> GetAsync<TResponseBody, TRequest>(TRequest request, string url)
-		where TResponseBody : IApiResponse
-		where TRequest : IApiRequest
 	{
 		Url requestUri = url.SetQueryParams(request);
 
@@ -43,8 +41,6 @@ public sealed class AppClient : IClient
 	}
 
 	public async Task<TResponseBody?> PostAsync<TResponseBody, TRequest>(TRequest apiRequest, string url)
-		where TResponseBody : IApiResponse
-		where TRequest : IApiRequest
 	{
 		string jsonContent = JsonSerializer.Serialize(apiRequest);
 		var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
@@ -63,7 +59,6 @@ public sealed class AppClient : IClient
 	}
 	
 	public async Task PostVoidAsync<TRequest>(TRequest apiRequest, string url)
-		where TRequest : IApiRequest
 	{
 		string jsonContent = JsonSerializer.Serialize(apiRequest);
 		var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");

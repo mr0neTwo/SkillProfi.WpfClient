@@ -1,15 +1,18 @@
-﻿using System.ComponentModel;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 
 namespace SkillProfi.WfpClient.Common.UserControls;
 
-public class InputViewModel : ViewModel
+public sealed class InputViewModel : ViewModel
 {
-	private string _value;
-	private Brush _borderColor = Brushes.Gray;
-	private bool _isWrong;
-
-	public string Label { get; set; }
+	public string Label
+	{
+		get => _label;
+		set
+		{
+			_label = value;
+			OnPropertyChanged();
+		}
+	}
 
 	public string Value
 	{
@@ -17,12 +20,10 @@ public class InputViewModel : ViewModel
 		set
 		{
 			_value = value;
-			OnPropertyChanged(nameof(Value));
+			Length = $"{value.Length}/{Limit}";
+			OnPropertyChanged();
 		}
 	}
-
-	public bool Required { get; set; }
-	public int Limit { get; set; } = int.MaxValue;
 
 	public Brush BorderColor
 	{
@@ -30,23 +31,70 @@ public class InputViewModel : ViewModel
 		set
 		{
 			_borderColor = value;
-			OnPropertyChanged(nameof(BorderColor));
+			OnPropertyChanged();
+		}
+	}
+	
+	public bool Required
+	{
+		get => _required;
+		set
+		{
+			_required = value;
+			OnPropertyChanged();
 		}
 	}
 
-	public DelegateCommand EnterPressCommand => new(OnEnterPress);
-	public DelegateCommand BlurCommand => new(OnBlur);
-	
-
-	private void OnEnterPress(object obj)
+	public int Width
 	{
-		Console.WriteLine("Enter нажата!");
+		get => _width;
+		set
+		{
+			_width = value;
+			OnPropertyChanged();
+		}
 	}
 
-	private void OnBlur(object obj)
+	public int Limit
 	{
-		Validate();
+		get => _limit;
+		set
+		{
+			_limit = value;
+			Length = $"{Value.Length}/{value}";
+			OnPropertyChanged();
+		}
 	}
+
+	public bool ShowLimit
+	{
+		get => _showLimit;
+		set
+		{
+			_showLimit = value;
+			OnPropertyChanged();
+		}
+	}
+
+	public string Length
+	{
+		get => _length;
+		set
+		{
+			_length = value;
+			OnPropertyChanged();
+		}
+	}
+
+	private string _label = string.Empty;
+	private string _value = string.Empty;
+	private bool _required;
+	private bool _showLimit;
+	private int _width = 300;
+	private int _limit = int.MaxValue;
+	private string _length = string.Empty;
+	private Brush _borderColor = Brushes.Gray;
+	private bool _isWrong;
 
 	public bool Validate()
 	{
@@ -56,11 +104,11 @@ public class InputViewModel : ViewModel
 		return !_isWrong;
 	}
 
-	protected void OnPropertyChanged(string propertyName)
+	public void Clear()
 	{
-		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		Value = string.Empty;
+		BorderColor = Brushes.Gray;
+		Length = $"{Value.Length}/{Limit}";
 	}
-
-	public event PropertyChangedEventHandler PropertyChanged;
 }
 

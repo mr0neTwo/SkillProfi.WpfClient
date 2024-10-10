@@ -1,8 +1,6 @@
-﻿using SkillProfi.WfpClient.Common;
+﻿namespace SkillProfi.WfpClient.Modules.Services.Models;
 
-namespace SkillProfi.WfpClient.Modules.Services.Models;
-
-public sealed class CreateServiceDto : IApiRequest
+public sealed class CreateServiceDto 
 {
 	public string Title { get; set; } = string.Empty;
 	public string Description { get; set; } = string.Empty;

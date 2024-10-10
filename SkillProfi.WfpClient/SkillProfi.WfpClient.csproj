@@ -25,4 +25,9 @@
       </Page>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Resources\no-image.png" />
+      <Resource Include="Resources\no-image.png" />
+    </ItemGroup>
+
 </Project>

@@ -1,8 +1,6 @@
-﻿using SkillProfi.WfpClient.Common;
+﻿namespace SkillProfi.WfpClient.Modules.Auth.Models;
 
-namespace SkillProfi.WfpClient.Modules.Auth.Models;
-
-public sealed class AuthResponse : IApiResponse
+public sealed class AuthResponse
 {
 	public User User { get; set; }
 	public string Token { get; set; }

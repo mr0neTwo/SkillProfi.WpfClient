@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:controls="clr-namespace:SkillProfi.WfpClient.Common.UserControls"
     mc:Ignorable="d"
     Title="AuthPage" 
     Height="600" 
@@ -53,12 +52,6 @@
             Margin="5"
             Text="{Binding Email}"
         />
-        
-        <!-- <controls:InputControl -->
-        <!--     Grid.Row="2"   -->
-        <!--     Grid.Column="2" -->
-        <!--     DataContext="{Binding LoginInput}"  -->
-        <!-- /> -->
         
         <TextBlock
             Grid.Row="3"

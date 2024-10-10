@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:userControls="clr-namespace:SkillProfi.WfpClient.Common.UserControls"
     mc:Ignorable="d"
     Title="Main" 
     Height="600" 
@@ -20,89 +21,15 @@
             Grid.Row="0"
             Margin="20 0 0 0"
         >
-            
-            <TextBlock 
-                Text="Цитата шапки"
-                Margin="0 15 0 0"
-            />
-            <TextBox 
-                Width="600"
-                Style="{StaticResource InputStyle}"
-                Text="{Binding SiteItems[TitleQuote]}"
-            />
-            
-            <TextBlock 
-                Text="Цитата главной страницы"
-                Margin="0 15 0 0"
-            />
-            <TextBox 
-                Width="600"
-                Style="{StaticResource InputStyle}"
-                Text="{Binding SiteItems[MainQuote]}"
-            />
-            
-            <TextBlock 
-                Text="Меню: Обращения"
-                Margin="0 15 0 0"
-            />
-            <TextBox 
-                Style="{StaticResource InputStyle}"
-                Text="{Binding SiteItems[Messages]}"
-            />
-            
-            <TextBlock 
-                Text="Меню: Главная"
-                Margin="0 15 0 0"
-            />
-            <TextBox 
-                Style="{StaticResource InputStyle}"
-                Text="{Binding SiteItems[Main]}"
-            />
-            
-            <TextBlock 
-                Text="Меню: Услуги"
-                Margin="0 15 0 0"
-            />
-            <TextBox 
-                Style="{StaticResource InputStyle}"
-                Text="{Binding SiteItems[Services]}"
-            />
-            
-            <TextBlock 
-                Text="Меню: Проекты"
-                Margin="0 15 0 0"
-            />
-            <TextBox 
-                Style="{StaticResource InputStyle}"
-                Text="{Binding SiteItems[Projects]}"
-            />
-            
-            <TextBlock 
-                Text="Меню: Блог"
-                Margin="0 15 0 0"
-            />
-            <TextBox 
-                Style="{StaticResource InputStyle}"
-                Text="{Binding SiteItems[Blog]}"
-            />
-            
-            <TextBlock 
-                Text="Меню: Контакты"
-                Margin="0 15 0 0"
-            />
-            <TextBox 
-                Style="{StaticResource InputStyle}"
-                Text="{Binding SiteItems[Contacts]}"
-            />
-            
-            <TextBlock 
-                Text="Меню: Пользователи"
-                Margin="0 15 0 0"
-            />
-            <TextBox 
-                Style="{StaticResource InputStyle}"
-                Text="{Binding SiteItems[Users], Mode=TwoWay}"
-            />
+            <userControls:InputControl DataContext="{Binding TitleQuoteInput}"/>
+            <userControls:InputControl DataContext="{Binding MainQuoteInput}"/>
+            <userControls:InputControl DataContext="{Binding MessagesInput}"/>
+            <userControls:InputControl DataContext="{Binding MainInput}"/>
+            <userControls:InputControl DataContext="{Binding ServicesInput}"/>
+            <userControls:InputControl DataContext="{Binding ProjectsInput}"/>
+            <userControls:InputControl DataContext="{Binding BlogInput}"/>
+            <userControls:InputControl DataContext="{Binding ContactsInput}"/>
+            <userControls:InputControl DataContext="{Binding UsersInput}"/>
             
         </StackPanel>
         

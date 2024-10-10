@@ -7,36 +7,27 @@ public sealed class ServicesApi(IClient client)
 {
 	public async Task<GetServiceListResponse?> GetList(GetServiceListRequest request)
 	{
-		GetServiceListResponse? response = await client.GetAsync<GetServiceListResponse, GetServiceListRequest>(request, "api/Service/GetList");
+		string url = "api/Service/GetList";
+		GetServiceListResponse? response = await client.GetAsync<GetServiceListResponse, GetServiceListRequest>(request, url);
 		
 		return response;
 	}
 
-	public async Task Create(Service service)
+	public async Task Create(CreateServiceDto createServiceDto)
 	{
-		CreateServiceDto createServiceDto = new()
-		{
-			Title = service.Title, 
-			Description = service.Description
-		};
-
-		await client.PostVoidAsync(createServiceDto, "api/Service/Create");
+		string url = "api/Service/Create";
+		await client.PostVoidAsync(createServiceDto, url);
 	}
 
-	public async Task Update(Service service)
+	public async Task Update(UpdateServiceDto updateServiceDto)
 	{
-		UpdateServiceDto updateServiceDto = new()
-		{
-			Id = service.Id, 
-			Title = service.Title, 
-			Description = service.Description
-		};
-
-		await client.PutAsync(updateServiceDto, "api/Service/Update");
+		string url = "api/Service/Update";
+		await client.PutAsync(updateServiceDto, url);
 	}
 
 	public async Task Delete(int serviceId)
 	{
-		await client.DeleteAsync(serviceId, "api/Service/Delete");
+		string url = "api/Service/Delete";
+		await client.DeleteAsync(serviceId, url);
 	}
 }

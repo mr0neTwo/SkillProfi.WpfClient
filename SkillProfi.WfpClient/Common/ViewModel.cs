@@ -1,6 +1,6 @@
 namespace SkillProfi.WfpClient.Common;
 
-public class ViewModel : ObservableObject
+public abstract class ViewModel : ObservableObject
 {
 	public void BeforeShown()
 	{

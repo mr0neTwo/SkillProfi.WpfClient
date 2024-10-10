@@ -11,7 +11,7 @@
             Orientation="Horizontal" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Center" 
-            Margin="10"
+            Margin="20 10"
         >
             <Button 
                 Padding="8 4" 

@@ -1,8 +1,6 @@
-using SkillProfi.WfpClient.Common;
-
 namespace SkillProfi.WfpClient.Modules.ClientRequests.Models;
 
-public sealed class GetClientRequestListResponse : IApiResponse
+public sealed class GetClientRequestListResponse 
 {
 	public List<ClientRequest> ClientRequests { get; set; }
 	public int PageNumber { get; set; }

@@ -7,7 +7,9 @@ public static class ProjectsDependencyInjection
 {
 	public static IServiceCollection AddProjectsModule(this IServiceCollection services)
 	{
+		services.AddSingleton<ProjectsApi>();
 		services.AddSingleton<ProjectsViewModel>();
+		services.AddSingleton<ProjectEditorViewModel>();
 		
 		return services;
 	}

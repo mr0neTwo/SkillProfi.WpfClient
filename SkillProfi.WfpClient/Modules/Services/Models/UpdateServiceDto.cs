@@ -1,8 +1,6 @@
-using SkillProfi.WfpClient.Common;
-
 namespace SkillProfi.WfpClient.Modules.Services.Models;
 
-public sealed class UpdateServiceDto : IApiRequest
+public sealed class UpdateServiceDto 
 {
 	public int Id { get; set; }
 	public string Title { get; set; } = string.Empty;

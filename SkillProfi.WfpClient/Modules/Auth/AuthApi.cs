@@ -1,5 +1,4 @@
-﻿using SkillProfi.WfpClient.Common;
-using SkillProfi.WfpClient.Modules.Auth.Models;
+﻿using SkillProfi.WfpClient.Modules.Auth.Models;
 using SkillProfi.WfpClient.Services.Client;
 
 namespace SkillProfi.WfpClient.Modules.Auth;
@@ -20,6 +19,6 @@ public sealed class AuthApi(IClient client)
 
 	public async Task Logout()
 	{
-		await client.GetAsync<IApiResponse>("api/Auth/Logout");
+		await client.GetAsync<Type>("api/Auth/Logout");
 	}
 }

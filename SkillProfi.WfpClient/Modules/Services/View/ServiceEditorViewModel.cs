@@ -1,10 +1,11 @@
 ﻿using SkillProfi.WfpClient.Common;
+using SkillProfi.WfpClient.Common.UserControls;
 using SkillProfi.WfpClient.Modules.Services.Models;
 using SkillProfi.WfpClient.Services.Navigation;
 
 namespace SkillProfi.WfpClient.Modules.Services.View;
 
-public sealed class ServiceEditorViewModel(INavigationService navigationService, ServicesApi servicesApi) : ViewModel
+public sealed class ServiceEditorViewModel(INavigationService navigationService, ServicesApi servicesApi) : EditorViewModel
 {
 	public Service Service
 	{
@@ -12,142 +13,96 @@ public sealed class ServiceEditorViewModel(INavigationService navigationService,
 		set
 		{
 			_service = value;
-			OnPropertyChanged();
+			TitleInput.Value = value.Title;
+			DescriptionInput.Value = value.Description;
 		}
 	}
 
-	public bool IsTittleCorrect
+	public InputViewModel TitleInput { get; set; } = new InputViewModel
 	{
-		get => _isTitleCorrect;
-		set
-		{
-			_isTitleCorrect = value;
-			OnPropertyChanged();
-		}
-	}
+		Label = "Заголовок", 
+		Required = true, 
+		Limit = FieldLimits.ServiceTitleMaxLength, 
+	};
 
-	public bool IsDescriptionCorrect
+	public InputViewModel DescriptionInput { get; set; } = new InputViewModel
 	{
-		get => _isDescriptionCorrect;
-		set
-		{
-			_isDescriptionCorrect = value;
-			OnPropertyChanged();
-		}
-	}
-
-	public bool ShowCreateButton
-	{
-		get => _showCreateButton;
-		set
-		{
-			_showCreateButton = value;
-			OnPropertyChanged();
-		}
-	}
-	
-	public bool ShowSaveButton
-	{
-		get => _showSaveButton;
-		set
-		{
-			_showSaveButton = value;
-			OnPropertyChanged();
-		}
-	}
-
-	public bool EditMode
-	{
-		get => _editMode;
-		set
-		{
-			_editMode = value;
-			ShowCreateButton = !value;
-			ShowSaveButton = value;
-		}
-	}
-
-	public DelegateCommand CreateCommand => new(Create, CanCreate);
-	public DelegateCommand SaveCommand => new(Save, CanSave);
-	public DelegateCommand GoBackCommand => new(GoBack, CanGoBack);
+		Label = "Описание", 
+		Required = true, 
+		Limit = FieldLimits.ProjectDescriptionMaxLength, 
+		Width = 600,
+		ShowLimit = true
+	};
 	
 	private Service _service = new();
-	private bool _isLoading;
-	private bool _editMode;
-	private bool _showCreateButton;
-	private bool _showSaveButton;
-	private bool _isTitleCorrect = true;
-	private bool _isDescriptionCorrect = true;
 
 	protected override void OnBeforeShown()
 	{
 		if (!EditMode)
 		{
-			Service = new Service();
+			ClearForms();
 		}
 	}
-
-	private void Create(object obj)
+	
+	private void ClearForms()
 	{
-		_ = CreateAsync();
+		TitleInput.Clear();
+		DescriptionInput.Clear();
+		Service = new Service();
+	}
+
+	protected override void Create(object obj)
+	{
+		if (ValidateField())
+		{
+			_ = CreateAsync();
+		}
 	}
 
 	private async Task CreateAsync()
 	{
-		if (!ValidateField())
+		CreateServiceDto createServiceDto = new()
 		{
-			return;
-		}
+			Title = TitleInput.Value, 
+			Description = DescriptionInput.Value,
+		};
 		
-		_isLoading = true;
-		await servicesApi.Create(Service);
-		_isLoading = false;
+		IsLoading = true;
+		await servicesApi.Create(createServiceDto);
+		IsLoading = false;
 		navigationService.NavigateTo<ServicesViewModel>();
 	}
-
-	private bool CanCreate(object obj)
-	{
-		return !_isLoading;
-	}
 	
-	private void Save(object obj)
+	protected override void Save(object obj)
 	{
-		_ = SaveAsync();
+		if (ValidateField())
+		{
+			_ = SaveAsync();
+		}
 	}
 
 	private async Task SaveAsync()
 	{
-		if (!ValidateField())
+		UpdateServiceDto updateServiceDto = new()
 		{
-			return;
-		}
+			Id = Service.Id, 
+			Title = TitleInput.Value, 
+			Description = DescriptionInput.Value,
+		};
 		
-		_isLoading = true;
-		await servicesApi.Update(Service);
-		_isLoading = false;
+		IsLoading = true;
+		await servicesApi.Update(updateServiceDto);
+		IsLoading = false;
 		navigationService.NavigateTo<ServicesViewModel>();
 	}
 
-	private bool CanSave(object obj)
-	{
-		return !_isLoading;
-	}
-
-	private void GoBack(object obj)
+	protected override void GoBack(object obj)
 	{
 		navigationService.NavigateTo<ServicesViewModel>();
-	}
-	
-	private bool CanGoBack(object obj)
-	{
-		return !_isLoading;
 	}
 
 	private bool ValidateField()
 	{
-		IsTittleCorrect = !string.IsNullOrEmpty(Service.Title);
-		IsDescriptionCorrect = !string.IsNullOrEmpty(Service.Description);
-		
-		return IsTittleCorrect && IsDescriptionCorrect;
+		return DescriptionInput.Validate() && TitleInput.Validate();
 	}
 }

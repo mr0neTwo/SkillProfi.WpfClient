@@ -53,6 +53,10 @@
             <project:ProjectsPage/>
         </DataTemplate>
         
+        <DataTemplate DataType="{x:Type TypeName=project:ProjectEditorViewModel }">
+            <project:ProjectEditorPage/>
+        </DataTemplate>
+        
         <DataTemplate DataType="{x:Type TypeName=blog:BlogViewModel }">
             <blog:BlogPage/>
         </DataTemplate>

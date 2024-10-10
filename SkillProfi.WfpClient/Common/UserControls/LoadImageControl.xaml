@@ -1,0 +1,32 @@
+﻿<UserControl 
+    x:Class="SkillProfi.WfpClient.Common.UserControls.LoadImageControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    mc:Ignorable="d"
+>
+    <Grid>
+        <Border 
+            BorderThickness="1" 
+            BorderBrush="Gray" 
+            Width="500"
+            Height="300"
+        >
+            <Button 
+                Command="{Binding LoadImageCommand}" 
+                BorderBrush="Transparent"
+                Background="Transparent"
+                HorizontalAlignment="Center"
+            >
+                <Image 
+                    Width="500"
+                    Height="300"
+                    Source="{Binding DisplayImage}" 
+                    Stretch="Uniform" 
+                    Cursor="Hand" 
+                />
+            </Button>
+        </Border>
+    </Grid>
+</UserControl>
