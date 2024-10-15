@@ -4,16 +4,132 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:userControls="clr-namespace:SkillProfi.WfpClient.Modules.Contacts.UserControls"
     mc:Ignorable="d"
     Title="Contacts" 
     Height="600" 
     Width="720"
 >
+    <Page.Resources>
+        <Style x:Key="HorizontalStackPanelStyle" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Margin" Value="0 10 0 0"/>
+        </Style>
+
+        <Style x:Key="LabelTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Width" Value="100"/>
+        </Style>
+    </Page.Resources>
+    
     <Grid>
-        <TextBox 
-            Text="ContactsPage"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-        />
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel
+            Grid.Row="0"
+            Margin="20 0 0 0"
+            MaxWidth="500"
+            HorizontalAlignment="Left"
+        >
+            <TextBlock 
+                Text="Контакты"
+                FontSize="14"
+            />
+            
+            <StackPanel 
+                Style="{StaticResource HorizontalStackPanelStyle}"
+                Margin="0 15 0 0"
+            >
+                <TextBlock 
+                    Text="Компания:"
+                    Style="{StaticResource LabelTextBlockStyle}"
+                />
+                <TextBlock Text="{Binding Company.Name}"/>
+            </StackPanel>
+            
+            <StackPanel 
+                Style="{StaticResource HorizontalStackPanelStyle}"
+            >
+                <TextBlock 
+                    Text="Email:"
+                    Style="{StaticResource LabelTextBlockStyle}"
+                />
+                <TextBlock Text="{Binding Company.Email}"/>
+            </StackPanel>
+            
+            <StackPanel 
+                Style="{StaticResource HorizontalStackPanelStyle}"
+            >
+                <TextBlock 
+                    Text="Телефон:"
+                    Style="{StaticResource LabelTextBlockStyle}"
+                />
+                <TextBlock Text="{Binding Company.PhoneNumber}"/>
+            </StackPanel>
+            
+            <StackPanel 
+                Style="{StaticResource HorizontalStackPanelStyle}"
+            >
+                <TextBlock 
+                    Text="Адрес:"
+                    Style="{StaticResource LabelTextBlockStyle}"
+                />
+                <TextBlock Text="{Binding Company.Address}"/>
+            </StackPanel>
+            
+            <StackPanel 
+                Style="{StaticResource HorizontalStackPanelStyle}"
+            >
+                <TextBlock 
+                    Text="Директор:"
+                    Style="{StaticResource LabelTextBlockStyle}"
+                />
+                <TextBlock Text="{Binding Company.DirectorName}"/>
+            </StackPanel>
+            
+            <Button 
+                Content="&#xE70F;"  
+                Style="{StaticResource IconButtonStyle}"
+                Command="{Binding EditCompanyCommand}"
+                HorizontalAlignment="Right"
+            />
+        </StackPanel>
+        
+        <StackPanel  
+            Grid.Row="1"
+            Margin="20 15 0 0"
+            MaxWidth="500"
+            HorizontalAlignment="Left"
+        >
+            <ItemsControl ItemsSource="{Binding SocialMediaViewModels}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <userControls:SocialMediaControl 
+                            DataContext="{Binding }"
+                            Margin="5"
+                        />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                
+            </ItemsControl>
+            
+            <Button 
+                Content="&#xE70F;"  
+                Style="{StaticResource IconButtonStyle}"
+                Command="{Binding EditSocialMediaCommand}"
+                HorizontalAlignment="Right"
+            />
+            
+        </StackPanel>
+        
     </Grid>
 </Page>

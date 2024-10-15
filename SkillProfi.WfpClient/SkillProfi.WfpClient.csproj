@@ -23,6 +23,11 @@
       <Page Update="Modules\ClientRequests\View\ClientRequestPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
+      <Page Update="Modules\Contacts\View\CompanyEditorPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
     </ItemGroup>
 
     <ItemGroup>

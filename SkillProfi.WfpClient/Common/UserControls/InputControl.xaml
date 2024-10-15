@@ -6,13 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:formatConverter="clr-namespace:SkillProfi.WfpClient.Services.FormatConverter"
     mc:Ignorable="d"
+    Margin="0 15 0 0"
 >
     <UserControl.Resources>
         <formatConverter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     </UserControl.Resources>
     
     <StackPanel 
-        Margin="0 15 0 0"
         Width="{Binding Width}"
         HorizontalAlignment="Left"
     >

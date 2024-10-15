@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="../Common/Themes/CreateButton.xaml"/>
                 <ResourceDictionary Source="../Common/Themes/IconButton.xaml"/>
                 <ResourceDictionary Source="../Common/Themes/Input.xaml"/>
+                <ResourceDictionary Source="../Common/Themes/SocialMediaLink.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
             <converter:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />

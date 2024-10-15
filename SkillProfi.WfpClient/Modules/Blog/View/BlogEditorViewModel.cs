@@ -5,7 +5,7 @@ using SkillProfi.WfpClient.Services.Navigation;
 
 namespace SkillProfi.WfpClient.Modules.Blog.View;
 
-public class BlogEditorViewModel(BlogApi blogApi, INavigationService navigationService) : EditorViewModel
+public sealed class BlogEditorViewModel(BlogApi blogApi, INavigationService navigationService) : EditorViewModel
 {
 	public Post Post
 	{

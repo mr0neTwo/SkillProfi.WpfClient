@@ -1,0 +1,35 @@
+﻿<Page 
+    x:Class="SkillProfi.WfpClient.Modules.Contacts.View.CompanyEditorPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:controls="clr-namespace:SkillProfi.WfpClient.Common.UserControls"
+    mc:Ignorable="d"
+    Title="CompanyEditor" 
+    Height="600" 
+    Width="720"
+>
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="510"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel
+            Grid.Row="0"
+            Margin="20 0 0 0"
+            VerticalAlignment="Top"
+        >
+            <controls:InputControl DataContext="{Binding NameInput}"/>
+            <controls:InputControl DataContext="{Binding EmailInput}"/>
+            <controls:InputControl DataContext="{Binding PhoneNumberInput}"/>
+            <controls:InputControl DataContext="{Binding AddressInput}"/>
+            <controls:InputControl DataContext="{Binding DirectorNameInput}"/>
+            <controls:InputControl DataContext="{Binding MapLinkInput}"/>
+        </StackPanel>
+        
+        <controls:EditorButtonsControl Grid.Row="1" />
+    </Grid>
+</Page>

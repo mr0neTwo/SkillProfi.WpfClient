@@ -69,6 +69,14 @@
             <contacts:ContactsPage/>
         </DataTemplate>
         
+        <DataTemplate DataType="{x:Type TypeName=contacts:CompanyEditorViewModel }">
+            <contacts:CompanyEditorPage/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type TypeName=contacts:SocialMediaEditorViewModel }">
+            <contacts:SocialMediaEditorPage/>
+        </DataTemplate>
+        
         <DataTemplate DataType="{x:Type TypeName=users:UsersViewModel }">
             <users:UsersPage/>
         </DataTemplate>

@@ -65,3 +65,12 @@ C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug
 C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Common\UserControls\LoadImageControl.g.cs
 C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Blog\View\BlogEditorPage.g.cs
 C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Blog\View\BlogEditorPage.baml
+C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Contacts\UserControls\SocialMediaControl.baml
+C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Contacts\UserControls\SocialMediaControl.g.cs
+C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Contacts\View\CompanyEditorPage.g.cs
+C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Contacts\View\CompanyEditorPage.baml
+C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Common\Themes\SocialMediaLink.baml
+C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Contacts\UserControls\IconSelectorControl.baml
+C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Contacts\UserControls\IconSelectorControl.g.cs
+C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Contacts\View\SocialMediaEditorPage.g.cs
+C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Contacts\View\SocialMediaEditorPage.baml
