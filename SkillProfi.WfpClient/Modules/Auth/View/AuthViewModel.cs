@@ -7,25 +7,21 @@ namespace SkillProfi.WfpClient.Modules.Auth.View;
 
 public sealed class AuthViewModel(IAuthService authService) : ViewModel
 {
-	public string Email
+	public InputViewModel EmailInput { get; set; } = new()
 	{
-		get => _email;
-		set
-		{
-			_email = value;
-			OnPropertyChanged();
-		}
-	}
+		Label = "Email",
+		Required = true,
+		Value = "admin",
+		Limit = FieldLimits.UserEmailMaxLength
+	};
 	
-	public string Password
+	public InputViewModel PasswordInput { get; set; } = new()
 	{
-		get => _password;
-		set
-		{
-			_password = value;
-			OnPropertyChanged();
-		}
-	}
+		Label = "Пароль",
+		Required = true,
+		Value = "123456",
+		Limit = FieldLimits.UserPasswordMaxLength
+	};
 	
 	public string Error
 	{
@@ -36,13 +32,9 @@ public sealed class AuthViewModel(IAuthService authService) : ViewModel
 			OnPropertyChanged();
 		}
 	}
-
-	public InputViewModel LoginInput { get; set; } = new() { Label = "Введите текст", Required = true, Limit = 50 };
-
+	
 	public DelegateCommand LoginCommand => new(Login);
-
-	private string _email = "admin";
-	private string _password = "123456";
+	
 	private string _error = string.Empty;
 
 	private void Login(object obj)
@@ -54,8 +46,8 @@ public sealed class AuthViewModel(IAuthService authService) : ViewModel
 	{
 		UserLoginDto userLoginDto = new()
 		{
-			Email = Email,
-			Password = Password
+			Email = EmailInput.Value,
+			Password = PasswordInput.Value
 		};
 		
 		AuthResponse? result = await authService.LoginAsync(userLoginDto);
@@ -67,12 +59,13 @@ public sealed class AuthViewModel(IAuthService authService) : ViewModel
 			return;
 		}
 		
-		Error = result?.ErrorMessage ?? "Сервер не отвечает";
+		Error = result?.ErrorMessage ?? "Неверный логин или пароль";
 	}
 
 	private void ResetForms()
 	{
-		Email = string.Empty;
-		Password = string.Empty;
+		EmailInput.Clear();
+		PasswordInput.Clear();
+		Error = string.Empty;
 	}
 }
