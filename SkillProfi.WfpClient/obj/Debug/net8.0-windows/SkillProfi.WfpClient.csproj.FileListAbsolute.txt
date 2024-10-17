@@ -74,3 +74,5 @@ C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug
 C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Contacts\UserControls\IconSelectorControl.g.cs
 C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Contacts\View\SocialMediaEditorPage.g.cs
 C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Contacts\View\SocialMediaEditorPage.baml
+C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Users\View\UserEditorPage.g.cs
+C:\Users\stasm\RiderProjects\SkillProfi.WpfClient\SkillProfi.WfpClient\obj\Debug\net8.0-windows\Modules\Users\View\UserEditorPage.baml

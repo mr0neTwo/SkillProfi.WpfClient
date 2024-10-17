@@ -1,5 +1,5 @@
-﻿using SkillProfi.WfpClient.Modules.Blog.Models;
-using SkillProfi.WfpClient.Services.Client;
+﻿using SkillProfi.WfpClient.Common.Client;
+using SkillProfi.WfpClient.Modules.Blog.Models;
 
 namespace SkillProfi.WfpClient.Modules.Blog;
 

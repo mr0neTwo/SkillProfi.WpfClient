@@ -2,11 +2,10 @@
 using System.Text;
 using Flurl;
 using Newtonsoft.Json;
-using SkillProfi.WfpClient.Common;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 
-namespace SkillProfi.WfpClient.Services.Client;
+namespace SkillProfi.WfpClient.Common.Client;
 
 public sealed class AppClient : IClient
 {

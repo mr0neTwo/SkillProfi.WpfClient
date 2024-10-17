@@ -1,4 +1,5 @@
 using SkillProfi.WfpClient.Modules.Auth.Models;
+using SkillProfi.WfpClient.Modules.Users.Models;
 
 namespace SkillProfi.WfpClient.Services.Auth;
 

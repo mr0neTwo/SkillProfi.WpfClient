@@ -1,4 +1,4 @@
-namespace SkillProfi.WfpClient.Modules.Auth.Models;
+namespace SkillProfi.WfpClient.Modules.Users.Models;
 
 public sealed class User
 {

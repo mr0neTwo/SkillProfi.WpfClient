@@ -4,16 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:converter="clr-namespace:SkillProfi.WfpClient.Services.FormatConverter"
     xmlns:local="clr-namespace:SkillProfi.WfpClient.Modules.ClientRequests"
     xmlns:userControls="clr-namespace:SkillProfi.WfpClient.Common.UserControls"
+    xmlns:formatConverter="clr-namespace:SkillProfi.WfpClient.Common.FormatConverter"
     mc:Ignorable="d"
     Title="ClientRequest" 
     Height="600"
     Width="720"
 >
     <Page.Resources>
-        <converter:TimestampToDateConverter x:Key="TimestampToDateConverter" />
+        <formatConverter:TimestampToDateConverter x:Key="TimestampToDateConverter" />
         <local:StatusValueConverter x:Key="StatusEnumConverter"/>
     </Page.Resources>
     

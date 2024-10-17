@@ -81,6 +81,10 @@
             <users:UsersPage/>
         </DataTemplate>
         
+        <DataTemplate DataType="{x:Type TypeName=users:UserEditorViewModel }">
+            <users:UserEditorPage/>
+        </DataTemplate>
+        
     </Window.Resources>
     
     <Grid>

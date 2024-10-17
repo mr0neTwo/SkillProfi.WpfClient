@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using SkillProfi.WfpClient.Common;
+using SkillProfi.WfpClient.Common.Client;
 using SkillProfi.WfpClient.Modules.Auth;
 using SkillProfi.WfpClient.Modules.Blog;
 using SkillProfi.WfpClient.Modules.ClientRequests;
@@ -12,7 +13,6 @@ using SkillProfi.WfpClient.Modules.Projects;
 using SkillProfi.WfpClient.Modules.Services;
 using SkillProfi.WfpClient.Modules.Users;
 using SkillProfi.WfpClient.Services.Auth;
-using SkillProfi.WfpClient.Services.Client;
 using SkillProfi.WfpClient.Services.Navigation;
 
 namespace SkillProfi.WfpClient;

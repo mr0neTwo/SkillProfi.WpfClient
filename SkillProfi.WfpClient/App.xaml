@@ -2,7 +2,7 @@
     x:Class="SkillProfi.WfpClient.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:converter="clr-namespace:SkillProfi.WfpClient.Services.FormatConverter">
+    xmlns:formatConverter="clr-namespace:SkillProfi.WfpClient.Common.FormatConverter">
     
     <Application.Resources>
         <ResourceDictionary>
@@ -14,7 +14,7 @@
                 <ResourceDictionary Source="../Common/Themes/SocialMediaLink.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
-            <converter:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
+            <formatConverter:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
             
         </ResourceDictionary>
     </Application.Resources>

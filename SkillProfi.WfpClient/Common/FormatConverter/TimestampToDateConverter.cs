@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Windows.Data;
 
-namespace SkillProfi.WfpClient.Services.FormatConverter;
+namespace SkillProfi.WfpClient.Common.FormatConverter;
 
 public sealed class TimestampToDateConverter : IValueConverter
 {

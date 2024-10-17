@@ -1,14 +1,19 @@
 ﻿using System.Globalization;
-using System.Windows;
 using System.Windows.Data;
+using System.Windows.Media;
 
-namespace SkillProfi.WfpClient.Services.FormatConverter;
+namespace SkillProfi.WfpClient.Common.FormatConverter;
 
-public class StringToVisibilityConverter : IValueConverter
+public sealed class BoolToBrushConverter : IValueConverter
 {
 	public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 	{
-		return string.IsNullOrEmpty(value as string) ? Visibility.Collapsed : Visibility.Visible;
+		if (value is bool booleanValue)
+		{
+			return booleanValue ? Brushes.Gray : Brushes.Red;
+		}
+		
+		return Brushes.Gray;
 	}
 
 	public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

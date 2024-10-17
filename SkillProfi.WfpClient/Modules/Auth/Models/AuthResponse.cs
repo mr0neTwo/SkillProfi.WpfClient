@@ -1,4 +1,6 @@
-﻿namespace SkillProfi.WfpClient.Modules.Auth.Models;
+﻿using SkillProfi.WfpClient.Modules.Users.Models;
+
+namespace SkillProfi.WfpClient.Modules.Auth.Models;
 
 public sealed class AuthResponse
 {

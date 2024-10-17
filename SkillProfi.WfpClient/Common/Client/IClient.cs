@@ -1,4 +1,4 @@
-﻿namespace SkillProfi.WfpClient.Services.Client;
+﻿namespace SkillProfi.WfpClient.Common.Client;
 
 public interface IClient
 {

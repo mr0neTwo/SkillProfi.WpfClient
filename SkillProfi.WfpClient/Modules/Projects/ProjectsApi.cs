@@ -1,5 +1,5 @@
-﻿using SkillProfi.WfpClient.Modules.Projects.Models;
-using SkillProfi.WfpClient.Services.Client;
+﻿using SkillProfi.WfpClient.Common.Client;
+using SkillProfi.WfpClient.Modules.Projects.Models;
 
 namespace SkillProfi.WfpClient.Modules.Projects;
 

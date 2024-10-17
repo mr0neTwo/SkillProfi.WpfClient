@@ -4,16 +4,87 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:formatConverter="clr-namespace:SkillProfi.WfpClient.Common.FormatConverter"
     mc:Ignorable="d"
     Title="Users" 
     Height="600" 
     Width="720"
 >
+    
+    <Page.Resources>
+        <formatConverter:TimestampToDateConverter x:Key="TimestampToDateConverter" />
+    </Page.Resources>
+    
     <Grid>
-        <TextBox 
-            Text="UsersPage"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="520" />
+        </Grid.RowDefinitions>
+        
+        <Button
+            Grid.Row="0"
+            Content="Новый пользователь"
+            HorizontalAlignment="Left"
+            Margin="20 0 0 0"
+            Style="{StaticResource CreateButtonStyle}"
+            Command="{Binding CreateCommand}"
         />
+        
+        <DataGrid
+            Grid.Row="1"
+            ItemsSource="{Binding Users}" 
+            IsReadOnly="True"
+            AutoGenerateColumns="False"
+            Margin="20 0"
+        >
+            <DataGrid.Columns>
+                
+                <DataGridTextColumn 
+                    Header="Id" 
+                    Width="20" 
+                    Binding="{Binding Id}" 
+                />
+                <DataGridTextColumn 
+                    Header="Дата создания" 
+                    Binding="{Binding CreationDate, Converter={StaticResource TimestampToDateConverter}}" 
+                />
+                <DataGridTextColumn 
+                    Header="Имя" 
+                    Binding="{Binding Name}" 
+                />
+                <DataGridTextColumn 
+                    Header="Email" 
+                    Binding="{Binding Email}" 
+                />
+                
+                <DataGridTemplateColumn Header="Действия">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel 
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                            >
+                                <Button 
+                                    Content="&#xE70F;"  
+                                    Style="{StaticResource IconButtonStyle}"
+                                    Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" 
+                                    CommandParameter="{Binding }"
+                                    Margin="5 0"
+                                />
+                                <Button 
+                                    Content="&#xE74D;" 
+                                    Style="{StaticResource IconButtonStyle}"
+                                    Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" 
+                                    CommandParameter="{Binding }"
+                                    Margin="5 0"
+                                    />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>
